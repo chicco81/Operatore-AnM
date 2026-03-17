@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <title>Operatore ANM v2.1</title>
+    <meta name="theme-color" content="#080810">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body style="margin:0; background:#080810; font-family:'Inter', sans-serif; color:white;">
+    <div id="root"></div>
+
+    <script type="module">
+        // --- CONFIGURAZIONE FIREBASE (SOSTITUISCI CON LE TUE CHIAVI) ---
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyArpKE246vfImHjMORn4qdYa-PwB18kWl8",
+  authDomain: "anm-turni-ufficiale.firebaseapp.com",
+  projectId: "anm-turni-ufficiale",
+  storageBucket: "anm-turni-ufficiale.firebasestorage.app",
+  messagingSenderId: "674549362843",
+  appId: "1:674549362843:web:4311b5a2d3ca82873a563e"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const auth = getAuth(app);
+
+        // --- ENGINE LOGICO (TASKS 1-9) ---
+        const ShiftEngine = {
+            CONFIG: {
+                'M': { label: 'Mattina', hours: 7, color: '#FF6B35' },
+                'P': { label: 'Pomeriggio', hours: 7, color: '#FF3CAC' },
+                'N': { label: 'Notte', hours: 7, color: '#784BA0' },
+                'R': { label: 'Riposo', hours: 0, color: '#333' }
+            }
+        };
+
+        const SyncManager = {
+            addToQueue: (path, data) => {
+                const q = JSON.parse(localStorage.getItem('sync_q') || '[]');
+                q.push({ path, data, ts: Date.now() });
+                localStorage.setItem('sync_q', JSON.stringify(q));
+                if (navigator.onLine) SyncManager.process();
+            },
+            process: async () => {
+                const q = JSON.parse(localStorage.getItem('sync_q') || '[]');
+                if (!navigator.onLine || q.length === 0) return;
+                const op = q[0];
+                try {
+                    await set(ref(db, op.path), op.data);
+                    q.shift();
+                    localStorage.setItem('sync_q', JSON.stringify(q));
+                    SyncManager.process();
+                } catch(e) { console.error("Sync Error", e); }
+            }
+        };
+
+        // --- UI COMPONENTS (REACT) ---
+        const { useState, useEffect } = React;
+
+        const App = () => {
+            const [user, setUser] = useState(null);
+            const [loading, setLoading] = useState(true);
+
+            useEffect(() => {
+                onAuthStateChanged(auth, (u) => {
+                    setUser(u);
+                    setLoading(false);
+                    if (u) SyncManager.process();
+                });
+            }, []);
+
+            if (loading) return React.createElement('div', {style: styles.center}, "CARICAMENTO...");
+
+            if (!user) return React.createElement(LoginScreen);
+
+            return React.createElement('div', {style: styles.container}, 
+                React.createElement('header', {style: styles.header}, 
+                    React.createElement('h1', {style: styles.title}, "OPERATORE"),
+                    React.createElement('span', {style: styles.badge}, "v2.1")
+                ),
+                React.createElement(Dashboard, {user}),
+                React.createElement(CalendarGrid),
+                React.createElement(FooterNav)
+            );
+        };
+
+        const LoginScreen = () => {
+            const [email, setEmail] = useState('');
+            const [pass, setPass] = useState('');
+            const handleLogin = () => signInWithEmailAndPassword(auth, email, pass);
+
+            return React.createElement('div', {style: styles.authBox},
+                React.createElement('h2', null, "ACCESSO RIGOROSO"),
+                React.createElement('input', {placeholder: 'Email Matricola', onChange: e => setEmail(e.target.value), style: styles.input}),
+                React.createElement('input', {type: 'password', placeholder: 'PIN/Password', onChange: e => setPass(e.target.value), style: styles.input}),
+                React.createElement('button', {onClick: handleLogin, style: styles.btn}, "ENTRA")
+            );
+        };
+
+        // --- STILI (TASK 5) ---
+        const styles = {
+            container: { padding: '20px', maxWidth: '500px', margin: '0 auto' },
+            header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' },
+            title: { fontFamily: 'Syne', fontSize: '24px', margin: 0, background: 'linear-gradient(135deg,#FF6B35,#FF3CAC)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' },
+            badge: { background: '#222', padding: '4px 8px', borderRadius: '6px', fontSize: '10px' },
+            authBox: { height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '30px' },
+            input: { width: '100%', padding: '15px', marginBottom: '10px', borderRadius: '12px', border: '1px solid #333', background: '#12121e', color: 'white' },
+            btn: { width: '100%', padding: '16px', borderRadius: '12px', border: 'none', background: '#FF6B35', color: 'white', fontWeight: '800', cursor: 'pointer' },
+            center: { height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(App));
+        // Attivazione automatica del Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('✅ Service Worker registrato con successo!'))
+            .catch(err => console.log('❌ Errore registrazione SW:', err));
+    });
+}
+    </script>
+</body>
+</html>
