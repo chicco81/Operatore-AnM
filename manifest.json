@@ -1,0 +1,24 @@
+{
+  "short_name": "Operatore",
+  "name": "Operatore ANM Napoli",
+  "description": "Gestione professionale turni per operatori ANM",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/tuo-username/operatore-anm/main/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/tuo-username/operatore-anm/main/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "display_override": ["fullscreen", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#080810",
+  "theme_color": "#080810",
+  "categories": ["productivity", "utilities"]
+}
