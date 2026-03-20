@@ -1,0 +1,25 @@
+{
+  "name": "Operatore ANM Napoli",
+  "short_name": "ANM Op.",
+  "description": "Gestione turni operatori ANM Napoli",
+  "start_url": "/ANM_OPERATOR/",
+  "scope": "/ANM_OPERATOR/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f0f0f0",
+  "theme_color": "#1a1f8c",
+  "icons": [
+    {
+      "src": "/ANM_OPERATOR/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/ANM_OPERATOR/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
