@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Guida — Operatore ANM Napoli</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f0f2f8;color:#1a1a2e}
+.hdr{background:#1a1f8c;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.hdr-logo{color:#f5a623;font-size:22px;font-weight:900;font-style:italic;letter-spacing:1px}
+.hdr-sub{color:rgba(255,255,255,.6);font-size:12px}
+.hero{background:linear-gradient(135deg,#1a1f8c,#2d35c0);padding:40px 20px;text-align:center;color:white}
+.hero h1{font-size:26px;font-weight:900;margin-bottom:8px}
+.hero p{font-size:14px;opacity:.7;max-width:400px;margin:0 auto}
+.badge{display:inline-block;background:rgba(245,166,35,.2);border:1px solid rgba(245,166,35,.4);color:#f5a623;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-top:12px}
+.container{max-width:640px;margin:0 auto;padding:24px 16px 60px}
+.section{background:white;border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:800;color:#1a1f8c;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #f5a623}
+.section-ic{font-size:22px}
+.feature{margin-bottom:12px}
+.feature-name{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:3px}
+.feature-desc{font-size:13px;color:#666;line-height:1.6}
+.step{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start}
+.step-num{width:26px;height:26px;border-radius:50%;background:#1a1f8c;color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-text{font-size:13px;color:#444;line-height:1.6}
+.tip{background:#f0f7ff;border:1px solid #bcd4f0;border-radius:10px;padding:12px 14px;margin-top:12px;font-size:12px;color:#1a4a7a;line-height:1.6}
+.tip strong{color:#1a1f8c}
+.example{background:#f8f9ff;border:1px solid #e0e3f0;border-radius:8px;padding:12px 14px;margin:8px 0;font-family:'Courier New',monospace;font-size:12px;color:#333;line-height:1.8}
+.preview{background:#1a1a2e;border-radius:12px;padding:12px;margin:10px 0;color:white}
+.prev-day{background:rgba(255,107,53,.3);border:1.5px solid #FF6B35;border-radius:10px;padding:8px;width:80px;display:inline-block;vertical-align:top;margin-right:8px}
+.prev-icon{font-size:18px;display:block;text-align:center}
+.prev-label{font-size:9px;font-weight:900;color:#FF6B35;text-align:center;display:block}
+.prev-time{font-size:7px;color:rgba(255,255,255,.7);text-align:center;display:block;font-family:monospace}
+.prev-fascia{font-size:7px;color:rgba(255,165,0,.9);display:block;margin-top:2px;font-family:monospace}
+.ftr{background:#f5a623;padding:14px 20px;text-align:center}
+.ftr-text{font-size:12px;color:#1a1f8c;font-weight:700}
+.link-btn{display:block;background:#1a1f8c;color:white;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:700;font-size:15px;margin-top:16px}
+.link-btn:hover{background:#2d35c0}
+.toc{background:white;border-radius:16px;padding:16px 20px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.toc a{display:block;padding:6px 0;color:#1a1f8c;text-decoration:none;font-size:13px;border-bottom:1px solid #f0f0f0}
+.toc a:last-child{border-bottom:none}
+.toc a:hover{color:#2d35c0}
+.new-badge{background:#10B981;color:white;font-size:9px;font-weight:800;padding:1px 6px;border-radius:10px;margin-left:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <span class="hdr-logo">anm</span>
+  <span style="color:#f5a623;font-weight:900;letter-spacing:2px;font-style:italic">INTRANET</span>
+  <span class="hdr-sub">Guida operatori</span>
+</div>
+
+<div class="hero">
+  <div style="font-size:48px;margin-bottom:12px">🚌</div>
+  <h1>Guida Operatore ANM</h1>
+  <p>Tutto quello che devi sapere per usare l'app gestione turni degli operatori ANM Napoli</p>
+  <span class="badge">v2.1 · Deposito Cavalleggeri d'Aosta</span>
+</div>
+
+<div class="container">
+
+  <!-- INDICE -->
+  <div class="toc">
+    <div style="font-size:12px;font-weight:800;color:#1a1f8c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">📋 Indice</div>
+    <a href="#accesso">🔐 Accesso e installazione</a>
+    <a href="#calendario">📅 Calendario turni</a>
+    <a href="#fasce">🕐 Fasce orarie multiple <span class="new-badge">NUOVO</span></a>
+    <a href="#bacheca">🔄 Bacheca Cambi</a>
+    <a href="#rubrica">📞 Rubrica ANM</a>
+    <a href="#stipendio">💶 Stipendio e Busta Paga</a>
+    <a href="#importa">📥 Importa ed Esporta</a>
+    <a href="#flotta">🚍 Flotta ANM</a>
+    <a href="#impostazioni">⚙️ Impostazioni</a>
+  </div>
+
+  <!-- ACCESSO -->
+  <div class="section" id="accesso">
+    <div class="section-title"><span class="section-ic">🔐</span> Accesso e installazione</div>
+    <div class="step"><div class="step-num">1</div><div class="step-text">Apri <strong>chicco81.github.io/Operatore-AnM</strong> su Safari (iPhone) o Chrome (Android)</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">Inserisci la tua <strong>Matricola</strong> e <strong>Password</strong> → tocca <strong>Accedi</strong></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">Se è il primo accesso tocca <strong>"Password dimenticata?"</strong> → reimposta con matricola + data di nascita</div></div>
+    <div class="tip">
+      <strong>📲 Installa come app sulla Home:</strong><br>
+      <strong>iPhone:</strong> Safari → tasto Condividi (□↑) → "Aggiungi alla schermata Home" → comparirà l'icona ANM blu<br>
+      <strong>Android:</strong> Chrome → menu ⋮ → "Aggiungi a schermata Home"
+    </div>
+  </div>
+
+  <!-- CALENDARIO -->
+  <div class="section" id="calendario">
+    <div class="section-title"><span class="section-ic">📅</span> Calendario turni</div>
+    <div class="feature">
+      <div class="feature-name">Navigare i mesi</div>
+      <div class="feature-desc">Scorri con il dito <strong>sinistra/destra</strong> sul calendario per cambiare mese. Oppure usa le frecce ‹ › in alto. Le <strong>domeniche</strong> sono in fucsia, le <strong>festività</strong> in rosa.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Assegnare un turno</div>
+      <div class="feature-desc">Tocca un giorno → si apre il pannello dettaglio → tocca <strong>✏️ Assegna turno</strong> → scegli il turno dalla lista in basso.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Assegnare lo stesso turno a più giorni</div>
+      <div class="feature-desc">Tocca il primo giorno → poi tocca il secondo giorno → si evidenzia un range arancione → scegli il turno → viene assegnato a tutti i giorni del range in una volta.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Rimuovere un turno</div>
+      <div class="feature-desc">Tocca il giorno → dal pannello dettaglio tocca il pulsante rosso <strong>🗑 Rimuovi</strong> → conferma.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Vetture e guasti</div>
+      <div class="feature-desc">Dal pannello del giorno puoi aggiungere i numeri di vettura in servizio e segnalare guasti con descrizione.</div>
+    </div>
+  </div>
+
+  <!-- FASCE ORARIE -->
+  <div class="section" id="fasce">
+    <div class="section-title"><span class="section-ic">🕐</span> Fasce orarie multiple <span class="new-badge" style="font-size:11px;padding:2px 8px">NUOVO</span></div>
+    <p style="font-size:13px;color:#666;margin-bottom:14px;line-height:1.6">Quando in una giornata hai più turni, cambi linea o servizio spezzato, puoi aggiungere più fasce orarie. <strong>Tutte le fasce appaiono nel riquadro del giorno</strong> nel calendario.</p>
+
+    <div class="step"><div class="step-num">1</div><div class="step-text">Tocca il giorno nel calendario</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">Nel pannello del giorno scorri in basso fino a <strong>🕐 Fasce orarie</strong></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">Tocca <strong>＋ Aggiungi fascia oraria</strong></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text">Inserisci l'<strong>orario</strong> (es. 06:40-09:35) e la <strong>linea</strong> (es. S5)</div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-text">Aggiungi tante fasce quante ne servono. Tocca <strong>✕</strong> per rimuoverne una.</div></div>
+
+    <div class="example">Prima fascia:   06:40 - 09:35  ·  S5<br>Seconda fascia: 10:30 - 14:20  ·  180/1</div>
+
+    <!-- Preview visuale -->
+    <div style="margin:12px 0">
+      <div style="font-size:11px;color:#888;margin-bottom:6px;font-weight:700">Come appare nel calendario:</div>
+      <div class="preview">
+        <div class="prev-day">
+          <span class="prev-icon">🌅</span>
+          <span class="prev-label">412</span>
+          <span class="prev-time">06:40-09:35</span>
+          <span class="prev-fascia">↳ 10:30 S5</span>
+          <span class="prev-fascia">↳ 11:30 180/1</span>
+        </div>
+        <span style="font-size:12px;color:rgba(255,255,255,.5);vertical-align:top;margin-top:8px;display:inline-block">← Il turno principale in alto,<br>le fasce extra con ↳ sotto</span>
+      </div>
+    </div>
+
+    <div class="tip"><strong>💡 Le fasce vengono incluse</strong> nell'esportazione mensile e nel PDF. Appaiono anche nel pannello dettaglio del giorno con gli orari in arancione.</div>
+  </div>
+
+  <!-- BACHECA CAMBI -->
+  <div class="section" id="bacheca">
+    <div class="section-title"><span class="section-ic">🔄</span> Bacheca Cambi</div>
+    <div class="feature">
+      <div class="feature-name">Pubblicare un cambio turno</div>
+      <div class="feature-desc">Tab 🔄 Cambi → <strong>📢 Pubblica</strong> → seleziona la data (il turno viene preso automaticamente dal calendario) → aggiungi il numero WhatsApp → tocca <strong>Pubblica sulla bacheca</strong>. L'annuncio appare in tempo reale su tutti i telefoni dei colleghi.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Contattare un collega</div>
+      <div class="feature-desc">Tab 🔄 Cambi → <strong>📋 Bacheca</strong> → tocca <strong>💬 WhatsApp</strong> sulla card del collega → si apre WhatsApp con messaggio già scritto.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Eliminare il proprio annuncio</div>
+      <div class="feature-desc">Tocca il pulsante <strong>🗑</strong> sulla tua card.</div>
+    </div>
+    <div class="tip"><strong>⚠️ Richiede internet.</strong> Solo matricole ANM (14000-25000) o INT (50000-55000) possono pubblicare.</div>
+  </div>
+
+  <!-- RUBRICA -->
+  <div class="section" id="rubrica">
+    <div class="section-title"><span class="section-ic">📞</span> Rubrica ANM</div>
+    <div class="feature">
+      <div class="feature-name">862 contatti dei 4 depositi</div>
+      <div class="feature-desc">🔵 Cavalleggeri Aosta · 🟣 Via Puglie · 🟢 Carlo III · 🟠 San Giovanni</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Ricerca</div>
+      <div class="feature-desc">Cerca per <strong>cognome</strong>, <strong>nome</strong>, <strong>matricola</strong> o <strong>numero di telefono</strong>. Filtra per deposito con i pulsanti colorati in alto.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Contattare</div>
+      <div class="feature-desc">Tocca un contatto → appare la riga con <strong>📞 Chiama</strong> e <strong>💬 WhatsApp</strong>.</div>
+    </div>
+  </div>
+
+  <!-- STIPENDIO E BUSTA -->
+  <div class="section" id="stipendio">
+    <div class="section-title"><span class="section-ic">💶</span> Stipendio e Busta Paga</div>
+    <div class="feature">
+      <div class="feature-name">Calcolo stipendio mensile</div>
+      <div class="feature-desc">Tab 💶 Stipendio: calcolo automatico basato sui turni del calendario. Tariffe CCNL Autoferrotramvieri 2024 preimpostate: base €14.28/h, straord. 150% €21.42/h, domenicali €3.20/h, festivi €4.80/h, notturno €1.95/h, spezzato €2.50, ticket presenza €8.50. Modificabili.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Statistiche annuali</div>
+      <div class="feature-desc">In fondo al Report trovi il riepilogo dell'anno con ore totali, giorni, straordinari, domenicali, festivi e grafico a barre mensile.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Analisi busta paga PDF</div>
+      <div class="feature-desc">Tab 📄 Busta → carica il PDF della busta paga → l'app confronta con i turni registrati e segnala anomalie (voci mancanti o importi diversi). Archivio fino a 24 mesi.</div>
+    </div>
+  </div>
+
+  <!-- IMPORTA ED ESPORTA -->
+  <div class="section" id="importa">
+    <div class="section-title"><span class="section-ic">📥</span> Importa ed Esporta</div>
+    <div class="feature">
+      <div class="feature-name">Importa turni da PDF ANM</div>
+      <div class="feature-desc">Tab 📥 Importa → carica il PDF del prospetto turni ANM → l'app riconosce e inserisce automaticamente i turni nel calendario.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Esporta turni mensili</div>
+      <div class="feature-desc">Tab 📤 Esporta → condividi il riepilogo mensile via WhatsApp/Telegram <strong>oppure</strong> genera un <strong>PDF professionale</strong> con header ANM blu/giallo, tutti i giorni con turno, orario, linea e fasce extra.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Backup e ripristino dati</div>
+      <div class="feature-desc">⚙️ Account → <strong>Esporta backup</strong>: salva tutti i turni in un file JSON. Per recuperare tutto su un nuovo telefono usa <strong>Ripristina backup</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FLOTTA -->
+  <div class="section" id="flotta">
+    <div class="section-title"><span class="section-ic">🚍</span> Flotta ANM in tempo reale</div>
+    <div class="feature">
+      <div class="feature-name">Mappa live</div>
+      <div class="feature-desc">Tab 🚍 Flotta → <strong>🗺️ Mappa live</strong>: vedi la posizione di tutti i bus ANM in tempo reale tramite Infoclick direttamente nell'app. Se la mappa non si carica tocca ↗️ Apri.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Accesso rapido</div>
+      <div class="feature-desc">Tab 🚍 Flotta → <strong>🔗 Accesso rapido</strong>: link diretti a ANM GO (mappa GPS), Infoclick (orari fermata), Stato del servizio (interruzioni e deviazioni).</div>
+    </div>
+  </div>
+
+  <!-- IMPOSTAZIONI -->
+  <div class="section" id="impostazioni">
+    <div class="section-title"><span class="section-ic">⚙️</span> Impostazioni</div>
+    <div class="feature"><div class="feature-name">🔒 PIN blocco automatico</div><div class="feature-desc">Imposta un PIN di 4 cifre: l'app si blocca dopo 5 minuti di inattività. Utile se lasci il telefono incustodito.</div></div>
+    <div class="feature"><div class="feature-name">🎨 Tema</div><div class="feature-desc">Cambia tra tema scuro e chiaro con un tap dal profilo.</div></div>
+    <div class="feature"><div class="feature-name">🔔 Notifiche push</div><div class="feature-desc">Attiva le notifiche: ogni sera alle 21:00 ricevi un reminder con il turno di domani.</div></div>
+    <div class="feature"><div class="feature-name">💾 Backup</div><div class="feature-desc">Esporta tutti i tuoi turni in un file JSON. Ripristinalo su qualsiasi dispositivo.</div></div>
+    <div class="feature"><div class="feature-name">👑 Pannello Admin</div><div class="feature-desc">Visibile solo alla matricola 50270. Permette di pubblicare avvisi per tutti, resettare password utenti, migrare matricole, vedere lo storico accessi.</div></div>
+    <div class="tip">
+      <strong>🔑 Password dimenticata?</strong><br>
+      Dalla schermata login tocca "Password dimenticata?" → inserisci matricola + data di nascita → imposta nuova password.<br><br>
+      <strong>📱 Cambi telefono?</strong><br>
+      Prima fai il backup in ⚙️ Account → poi ripristinalo sul nuovo telefono.
+    </div>
+  </div>
+
+  <!-- LINK APP -->
+  <a class="link-btn" href="https://chicco81.github.io/Operatore-AnM/" target="_blank">
+    🚌 Apri l'app Operatore ANM
+  </a>
+
+</div>
+
+<div class="ftr">
+  <div class="ftr-text">Operatore ANM Napoli v2.1 · Deposito Cavalleggeri d'Aosta · Fatto con ❤️ per gli operatori ANM</div>
+</div>
+
+</body>
+</html>
